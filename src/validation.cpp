@@ -1034,7 +1034,7 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-	int AnnualReductions = nHeight / consensusParams.nSubsidyAnnualInterval
+	int AnnualReductions = nHeight / consensusParams.nSubsidyAnnualInterval;
         if (AnnualReductions > consensusParams.nSubsidyTotalYears)
         {
                 return 0;
@@ -1055,7 +1055,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         nSubsidy = 1000 * COIN;
         for (int i = 0; i < AnnualReductions; i++)
         {
-                nSubsidy = nSubsidy * (100 - consensusParams.AnnualReductionPercentage) / 100
+                nSubsidy = nSubsidy * (100 - consensusParams.AnnualReductionPercentage) / 100;
         }
         return nSubsidy;
 }
