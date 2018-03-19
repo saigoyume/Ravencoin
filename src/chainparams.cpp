@@ -117,8 +117,13 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
-        consensus.nBIP34Enabled = true;
+        consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
+	// consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
+        consensus.nSubsidyFirstIncreaseHeight = 40321;
+	consensus.nSubsidySecondIncreaseHeight = 80641;
+	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
@@ -214,8 +219,13 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
-        consensus.nBIP34Enabled = true;
+        consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
+	// consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
+        consensus.nSubsidyFirstIncreaseHeight = 40321;
+	consensus.nSubsidySecondIncreaseHeight = 80641;
+	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
@@ -303,8 +313,13 @@ public:
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled = true;
-        consensus.nSubsidyHalvingInterval = 150;
-        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
+	// consensus.nSubsidyHalvingInterval = 150;
+	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
+        consensus.nSubsidyFirstIncreaseHeight = 40321;
+	consensus.nSubsidySecondIncreaseHeight = 80641;
+	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
