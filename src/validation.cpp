@@ -1034,15 +1034,30 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
-
-    CAmount nSubsidy = 5000 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
-    return nSubsidy;
+	int AnnualReductions = nHeight / consensusParams.nSubsidyAnnualInterval
+        if (AnnualReductions > consensusParams.nSubsidyTotalYears)
+        {
+                return 0;
+        }
+        CAmount nSubsidy;
+	// Subsidy increases over the first few months to provide a more fair distribution of coins
+        if (nHeight < consensusParams.nSubsidyFirstIncreaseHeight)
+        {
+                nSubsidy = 10 * COIN;
+                return nSubsidy;
+        }
+        if (nHeight < consensusParams.nSubsidySecondIncreaseHeight)
+        {
+                nSubsidy = 100 * COIN;
+                return nSubsidy;
+        }
+	// Subsidy decreases by a percentage every year
+        nSubsidy = 1000 * COIN;
+        for (int i = 0; i < AnnualReductions; i++)
+        {
+                nSubsidy_temp = nSubsidy_temp * (100 - consensusParams.AnnualRe$
+        }
+        return nSubsidy;
 }
 
 bool IsInitialBlockDownload()
