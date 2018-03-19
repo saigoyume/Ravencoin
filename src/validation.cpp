@@ -1055,7 +1055,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         nSubsidy = 1000 * COIN;
         for (int i = 0; i < AnnualReductions; i++)
         {
-                nSubsidy_temp = nSubsidy_temp * (100 - consensusParams.AnnualRe$
+                nSubsidy = nSubsidy * (100 - consensusParams.AnnualReductionPercentage) / 100
         }
         return nSubsidy;
 }
