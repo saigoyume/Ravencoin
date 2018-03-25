@@ -65,7 +65,7 @@ The socket type is PUB and the address must be a valid ZeroMQ socket
 address. The same address can be used in more than one notification.
 
 For instance:
-
+# TODO: fix ports
     $ ravend -zmqpubhashtx=tcp://127.0.0.1:28766 \
                -zmqpubrawtx=ipc:///tmp/ravend.tx.raw
 
