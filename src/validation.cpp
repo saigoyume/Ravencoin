@@ -1034,30 +1034,30 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-	int AnnualReductions = nHeight / consensusParams.nSubsidyAnnualInterval;
-        if (AnnualReductions > consensusParams.YearsOfnSubsidy)
-        {
-                return 0;
-        }
-        CAmount nSubsidy;
-	// Subsidy increases over the first few months to provide a more fair distribution of coins
-        if (nHeight < consensusParams.nSubsidyFirstIncreaseHeight)
-        {
-                nSubsidy = 10 * COIN;
-                return nSubsidy;
-        }
-        if (nHeight < consensusParams.nSubsidySecondIncreaseHeight)
-        {
-                nSubsidy = 100 * COIN;
-                return nSubsidy;
-        }
-	// Subsidy decreases by a percentage every year
-        nSubsidy = 1000 * COIN;
-        for (int i = 0; i < AnnualReductions; i++)
-        {
-                nSubsidy = nSubsidy * (100 - consensusParams.AnnualReductionPercentage) / 100;
-        }
+    int AnnualReductions = nHeight / consensusParams.nSubsidyAnnualInterval;
+    if (AnnualReductions > consensusParams.YearsOfnSubsidy)
+    {
+        return 0;
+    }
+    CAmount nSubsidy;
+    // Subsidy increases over the first few months to provide a more fair distribution of coins
+    if (nHeight < consensusParams.nSubsidyFirstIncreaseHeight)
+    {
+        nSubsidy = 10 * COIN;
         return nSubsidy;
+    }
+    if (nHeight < consensusParams.nSubsidySecondIncreaseHeight)
+    {
+        nSubsidy = 100 * COIN;
+        return nSubsidy;
+    }
+    // Subsidy decreases by a percentage every year
+    nSubsidy = 1000 * COIN;
+    for (int i = 0; i < AnnualReductions; i++)
+    {
+	nSubsidy = nSubsidy * (100 - consensusParams.AnnualReductionPercentage) / 100;
+    }
+    return nSubsidy;
 }
 
 bool IsInitialBlockDownload()

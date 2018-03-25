@@ -19,7 +19,7 @@ To Build
 
 ```bash
 ./autogen.sh
-./configure
+./configure --disable-tests --disable-gui-tests #until tests are reimplemented for reward structure change
 make
 make install # optional
 ```
