@@ -38,7 +38,7 @@ import sys
 if not (sys.version_info.major >= 3 and sys.version_info.minor >= 4):
     print("This example only works with Python 3.4 and greater")
     sys.exit(1)
-
+# TODO: fix ports
 port = 28766
 
 class ZMQHandler():

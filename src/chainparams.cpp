@@ -121,9 +121,10 @@ public:
 	// consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
 	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
         consensus.nSubsidyFirstIncreaseHeight = 40321;
-	consensus.nSubsidySecondIncreaseHeight = 80641;
-	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
-	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.nBIP34Enabled = true;
+        consensus.nSubsidySecondIncreaseHeight = 80641;
+        consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+        consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards
+        consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
@@ -131,7 +132,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
-	consensus.fPowAllowMinDifficultyBlocks = false;
+        consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
@@ -166,7 +167,7 @@ public:
         pchMessageStart[1] = 0x41;
         pchMessageStart[2] = 0x56;
         pchMessageStart[3] = 0x4e;
-        nDefaultPort = 8767;
+        nDefaultPort = 31680;
         nPruneAfterHeight = 100000;
                   
         genesis = CreateGenesisBlock(1514999494, 25023712, 0x1e00ffff, 4, 5000 * COIN); 
@@ -219,13 +220,13 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
-	// consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
-	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
-        consensus.nSubsidyFirstIncreaseHeight = 40321;
-	consensus.nSubsidySecondIncreaseHeight = 80641;
-	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
-	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.nBIP34Enabled = true;
+        //consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyAnnualInterval = 100;   
+        consensus.nSubsidyFirstIncreaseHeight = 20;
+        consensus.nSubsidySecondIncreaseHeight = 40;
+        consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+        consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards
+        consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
@@ -254,7 +255,7 @@ public:
         pchMessageStart[1] = 0x56;
         pchMessageStart[2] = 0x4E;
         pchMessageStart[3] = 0x54;
-        nDefaultPort = 18767;
+        nDefaultPort = 31681;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1517350340, 4791361, 0x1e00ffff, 4, 5000 * COIN); 
@@ -313,13 +314,13 @@ public:
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled = true;
-        consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
-	// consensus.nSubsidyHalvingInterval = 150;
-	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
+        // consensus.nSubsidyHalvingInterval = 150;
+        consensus.nSubsidyAnnualInterval = 525600;    
         consensus.nSubsidyFirstIncreaseHeight = 40321;
-	consensus.nSubsidySecondIncreaseHeight = 80641;
-	consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
-	consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.nSubsidySecondIncreaseHeight = 80641;
+        consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
+        consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards
+        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -340,7 +341,7 @@ public:
         pchMessageStart[1] = 0x52;
         pchMessageStart[2] = 0x4F;
         pchMessageStart[3] = 0x57;
-        nDefaultPort = 18444;
+        nDefaultPort = 31682;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1510082300, 2, 0x207fffff, 4, 5000 * COIN);
