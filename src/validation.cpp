@@ -1040,15 +1040,10 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         return 0;
     }
     CAmount nSubsidy;
-    // Subsidy increases over the first few months to provide a more fair distribution of coins
-    if (nHeight < consensusParams.nSubsidyFirstIncreaseHeight)
+    // Subsidy increases linearly over the first few months to provide a more fair distribution of coins
+    if (nHeight < consensusParams.nSubsidyPlateauHeight)
     {
-        nSubsidy = 10 * COIN;
-        return nSubsidy;
-    }
-    if (nHeight < consensusParams.nSubsidySecondIncreaseHeight)
-    {
-        nSubsidy = 100 * COIN;
+        nSubsidy = (1 + 999 * ( nHeight / consensusParams.nSubsidyPlateauHeight )) * COIN;
         return nSubsidy;
     }
     // Subsidy decreases by a percentage every year
