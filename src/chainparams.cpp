@@ -168,7 +168,7 @@ public:
         pchMessageStart[3] = 0x4e;
         nDefaultPort = 31680;
         nPruneAfterHeight = 100000;
-        genesis = CreateGenesisBlock(1514999494, 13953436, 0x1e00ffff, 4, 5000 * COIN); 
+        genesis = CreateGenesisBlock(1522446978, 16335503, 0x1e00ffff, 4, 5000 * COIN); 
 
         // calculate Genesis Block
         // Reset genesis
@@ -207,13 +207,12 @@ public:
             // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
         }
         std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
-	std::cout << "nNonce" << mainnetnonce << "\n";
 */	
         consensus.hashGenesisBlock = genesis.GetHash();        
 
 //        std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
 //        std::cout << "Merkle: " << genesis.hashMerkleRoot.GetHex() << "\n";
-        assert(consensus.hashGenesisBlock == uint256S("0x00000016682c862d530e6df162836391344b3f2c9696692a369da3242f24248f"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000e53c2e3a0d008490531ae4c95a3ab30a6aff156043d1722cfbc4eb784b"));
         assert(genesis.hashMerkleRoot == uint256S("0x28ff00a867739a352523808d301f504bc4547699398d70faf2266a8bae5f3516"));
 
         vSeeds.emplace_back("seed-raven.ravencoin.org", false); 
