@@ -120,7 +120,7 @@ public:
         strNetworkID = "main";
         consensus.nSubsidyAnnualInterval = 525600;  //~1 year worth of blocks at 1 min block time
 	// Block height for first reward increase... Note the atypical reward structure in GetBlockSubsidy() in validation.cpp    
-        consensus.nSubsidyPlateauHeight = 80640;
+        consensus.nSubsidyPlateauHeight = 200;
         consensus.AnnualReductionPercentage = 23; // Percent reduction of the block reward that occurs annually
         consensus.YearsOfnSubsidy = 23; // Number of years until blocks stop producing rewards
         consensus.nBIP34Enabled = true;
@@ -168,7 +168,8 @@ public:
         pchMessageStart[3] = 0x4e;
         nDefaultPort = 31680;
         nPruneAfterHeight = 100000;
-        genesis = CreateGenesisBlock(1514999494, 13953436, 0x1e00ffff, 4, 5000 * COIN); 
+        genesis = CreateGenesisBlock(1522446978, 16335503, 0x1e00ffff, 4, 5000 * COIN);
+ 
 
         // calculate Genesis Block
         // Reset genesis
@@ -213,11 +214,10 @@ public:
 
 //        std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
 //        std::cout << "Merkle: " << genesis.hashMerkleRoot.GetHex() << "\n";
-        assert(consensus.hashGenesisBlock == uint256S("0x00000016682c862d530e6df162836391344b3f2c9696692a369da3242f24248f"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000e53c2e3a0d008490531ae4c95a3ab30a6aff156043d1722cfbc4eb784b"));
         assert(genesis.hashMerkleRoot == uint256S("0x28ff00a867739a352523808d301f504bc4547699398d70faf2266a8bae5f3516"));
 
-        vSeeds.emplace_back("seed-raven.ravencoin.org", false); 
-        vSeeds.emplace_back("seed-raven.bitactivate.com", false); 
+        vSeeds.emplace_back("cro-seed-01.fatpanda.club", false); 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);
