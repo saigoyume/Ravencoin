@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Carrot Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -98,7 +98,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CRavenSecret : public CBase58Data
+class CCarrotSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -107,11 +107,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CRavenSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CRavenSecret() {}
+    CCarrotSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CCarrotSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CRavenExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CCarrotExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -129,19 +129,19 @@ public:
         return ret;
     }
 
-    CRavenExtKeyBase(const K &key) {
+    CCarrotExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CRavenExtKeyBase(const std::string& strBase58c) {
+    CCarrotExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CRavenExtKeyBase() {}
+    CCarrotExtKeyBase() {}
 };
 
-typedef CRavenExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CRavenExtKey;
-typedef CRavenExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CRavenExtPubKey;
+typedef CCarrotExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CCarrotExtKey;
+typedef CCarrotExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CCarrotExtPubKey;
 
 std::string EncodeDestination(const CTxDestination& dest);
 CTxDestination DecodeDestination(const std::string& str);
