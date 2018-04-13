@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Carrot.
+This directory contains data-driven tests for various aspects of Raven.
 
 License
 --------

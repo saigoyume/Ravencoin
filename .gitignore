@@ -1,12 +1,12 @@
 *.tar.gz
 
-src/carrot
-src/carrotd
-src/carrot-cli
-src/carrot-tx
-src/test/test_carrot
-src/test/test_carrot_fuzzy
-src/qt/test/test_carrot-qt
+src/raven
+src/ravend
+src/raven-cli
+src/raven-tx
+src/test/test_raven
+src/test/test_raven_fuzzy
+src/qt/test/test_raven-qt
 .vscode
 output.txt
 
@@ -31,8 +31,8 @@ config.log
 config.status
 configure
 libtool
-src/config/carrot-config.h
-src/config/carrot-config.h.in
+src/config/raven-config.h
+src/config/raven-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -79,11 +79,11 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-Carrot-Qt.app
+Raven-Qt.app
 
 # Unit-tests
 Makefile.test
-carrot-qt_test
+raven-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -96,7 +96,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_carrot.coverage/
+test_raven.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -111,5 +111,5 @@ test/cache/*
 
 /doc/doxygen/
 
-libcarrotconsensus.pc
+libravenconsensus.pc
 contrib/devtools/split-debug.sh

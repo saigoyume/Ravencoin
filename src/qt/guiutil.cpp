@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "guiutil.h"
 
-#include "carrotaddressvalidator.h"
-#include "carrotunits.h"
+#include "ravenaddressvalidator.h"
+#include "ravenunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -129,11 +129,11 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Carrot address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a Raven address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
 #endif
-    widget->setValidator(new CarrotAddressEntryValidator(parent));
-    widget->setCheckValidator(new CarrotAddressCheckValidator(parent));
+    widget->setValidator(new RavenAddressEntryValidator(parent));
+    widget->setCheckValidator(new RavenAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -145,10 +145,10 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseCarrotURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseRavenURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no carrot: URI
-    if(!uri.isValid() || uri.scheme() != QString("carrot"))
+    // return if URI is not valid or is no raven: URI
+    if(!uri.isValid() || uri.scheme() != QString("raven"))
         return false;
 
     SendCoinsRecipient rv;
@@ -188,7 +188,7 @@ bool parseCarrotURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!CarrotUnits::parse(CarrotUnits::RVN, i->second, &rv.amount))
+                if(!RavenUnits::parse(RavenUnits::RVN, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -206,28 +206,28 @@ bool parseCarrotURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseCarrotURI(QString uri, SendCoinsRecipient *out)
+bool parseRavenURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert carrot:// to carrot:
+    // Convert raven:// to raven:
     //
-    //    Cannot handle this later, because carrot:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because raven:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("carrot://", Qt::CaseInsensitive))
+    if(uri.startsWith("raven://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "carrot:");
+        uri.replace(0, 10, "raven:");
     }
     QUrl uriInstance(uri);
-    return parseCarrotURI(uriInstance, out);
+    return parseRavenURI(uriInstance, out);
 }
 
-QString formatCarrotURI(const SendCoinsRecipient &info)
+QString formatRavenURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("carrot:%1").arg(info.address);
+    QString ret = QString("raven:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(CarrotUnits::format(CarrotUnits::RVN, info.amount, false, CarrotUnits::separatorNever));
+        ret += QString("?amount=%1").arg(RavenUnits::format(RavenUnits::RVN, info.amount, false, RavenUnits::separatorNever));
         paramCount++;
     }
 
@@ -417,7 +417,7 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
 }
 
-bool openCarrotConf()
+bool openRavenConf()
 {
     boost::filesystem::path pathConfig = GetConfigFile(RAVEN_CONF_FILENAME);
 
@@ -429,7 +429,7 @@ bool openCarrotConf()
     
     configFile.close();
     
-    /* Open carrot.conf with the associated application */
+    /* Open raven.conf with the associated application */
     return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
 
@@ -617,15 +617,15 @@ fs::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Carrot.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Raven.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Carrot (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Carrot (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Raven (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Raven (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Carrot*.lnk
+    // check for Raven*.lnk
     return fs::exists(StartupShortcutPath());
 }
 
@@ -715,8 +715,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "carrot.desktop";
-    return GetAutostartDir() / strprintf("carrot-%s.lnk", chain);
+        return GetAutostartDir() / "raven.desktop";
+    return GetAutostartDir() / strprintf("raven-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -756,13 +756,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a carrot.desktop file to the autostart directory:
+        // Write a raven.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Carrot\n";
+            optionFile << "Name=Raven\n";
         else
-            optionFile << strprintf("Name=Carrot (%s)\n", chain);
+            optionFile << strprintf("Name=Raven (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -788,7 +788,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         return nullptr;
     }
     
-    // loop through the list of startup items and try to find the carrot app
+    // loop through the list of startup items and try to find the raven app
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
@@ -822,38 +822,38 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef carrotAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (carrotAppUrl == nullptr) {
+    CFURLRef ravenAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (ravenAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, carrotAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, ravenAppUrl);
 
-    CFRelease(carrotAppUrl);
+    CFRelease(ravenAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef carrotAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (carrotAppUrl == nullptr) {
+    CFURLRef ravenAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (ravenAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, carrotAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, ravenAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add carrot app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, carrotAppUrl, nullptr, nullptr);
+        // add raven app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, ravenAppUrl, nullptr, nullptr);
     }
     else if(!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);
     }
     
-    CFRelease(carrotAppUrl);
+    CFRelease(ravenAppUrl);
     return true;
 }
 #pragma GCC diagnostic pop

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -51,7 +51,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Carrot cannot be compiled without assertions."
+# error "Raven cannot be compiled without assertions."
 #endif
 
 #define MICRO 0.000001
@@ -98,7 +98,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "Carrot Signed Message:\n";
+const std::string strMessageMagic = "Raven Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -1570,7 +1570,7 @@ static bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, 
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("carrot-scriptch");
+    RenameThread("raven-scriptch");
     scriptcheckqueue.Thread();
 }
 

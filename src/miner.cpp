@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,7 +41,7 @@
 extern std::vector<CWalletRef> vpwallets;
 //////////////////////////////////////////////////////////////////////////////
 //
-// CarrotMiner
+// RavenMiner
 //
 
 //
@@ -507,11 +507,11 @@ CWallet *GetFirstWallet() {
     return(vpwallets[0]);
 }
 
-void static CarrotMiner(const CChainParams& chainparams)
+void static RavenMiner(const CChainParams& chainparams)
 {
-    LogPrintf("CarrotMiner -- started\n");
+    LogPrintf("RavenMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("carrot-miner");
+    RenameThread("raven-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -519,7 +519,7 @@ void static CarrotMiner(const CChainParams& chainparams)
     CWallet *  pWallet = GetFirstWallet();
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("CarrotMiner -- Wallet not available\n");
+        LogPrintf("RavenMiner -- Wallet not available\n");
     }
 
     if (pWallet == NULL)
@@ -576,13 +576,13 @@ void static CarrotMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("CarrotMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("RavenMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("CarrotMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("RavenMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -601,7 +601,7 @@ void static CarrotMiner(const CChainParams& chainparams)
                     {
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("CarrotMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("RavenMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -648,17 +648,17 @@ void static CarrotMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("CarrotMiner -- terminated\n");
+        LogPrintf("RavenMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("CarrotMiner -- runtime error: %s\n", e.what());
+        LogPrintf("RavenMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-int GenerateCarrots(bool fGenerate, int nThreads, const CChainParams& chainparams)
+int GenerateRavens(bool fGenerate, int nThreads, const CChainParams& chainparams)
 {
 
     static boost::thread_group* minerThreads = NULL;
@@ -685,7 +685,7 @@ int GenerateCarrots(bool fGenerate, int nThreads, const CChainParams& chainparam
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&CarrotMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&RavenMiner, boost::cref(chainparams)));
     }
 
     return(numCores);

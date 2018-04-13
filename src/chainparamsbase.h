@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,8 +11,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between carrot-cli and carrotd)
- * of a given instance of the Carrot system.
+ * CBaseChainParams defines the base parameters (shared between raven-cli and ravend)
+ * of a given instance of the Raven system.
  */
 class CBaseChainParams
 {

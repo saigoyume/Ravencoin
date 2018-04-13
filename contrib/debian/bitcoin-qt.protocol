@@ -1,6 +1,6 @@
 [Protocol]
-exec=carrot-qt '%u'
-protocol=carrot
+exec=raven-qt '%u'
+protocol=raven
 input=none
 output=none
 helper=true

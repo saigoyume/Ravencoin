@@ -1,10 +1,10 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "netbase.h"
-#include "test/test_carrot.h"
+#include "test/test_raven.h"
 #include "utilstrencodings.h"
 
 #include <string>
@@ -83,10 +83,10 @@ bool static TestSplitHost(std::string test, std::string host, int port)
 
 BOOST_AUTO_TEST_CASE(netbase_splithost)
 {
-    BOOST_CHECK(TestSplitHost("www.carrot.org", "www.carrot.org", -1));
-    BOOST_CHECK(TestSplitHost("[www.carrot.org]", "www.carrot.org", -1));
-    BOOST_CHECK(TestSplitHost("www.carrot.org:80", "www.carrot.org", 80));
-    BOOST_CHECK(TestSplitHost("[www.carrot.org]:80", "www.carrot.org", 80));
+    BOOST_CHECK(TestSplitHost("www.raven.org", "www.raven.org", -1));
+    BOOST_CHECK(TestSplitHost("[www.raven.org]", "www.raven.org", -1));
+    BOOST_CHECK(TestSplitHost("www.raven.org:80", "www.raven.org", 80));
+    BOOST_CHECK(TestSplitHost("[www.raven.org]:80", "www.raven.org", 80));
     BOOST_CHECK(TestSplitHost("127.0.0.1", "127.0.0.1", -1));
     BOOST_CHECK(TestSplitHost("127.0.0.1:31680", "127.0.0.1", 31680));
     BOOST_CHECK(TestSplitHost("[127.0.0.1]", "127.0.0.1", -1));

@@ -1,31 +1,31 @@
-# /etc/conf.d/carrotd: config file for /etc/init.d/carrotd
+# /etc/conf.d/ravend: config file for /etc/init.d/ravend
 
 # Config file location
-#RAVEND_CONFIGFILE="/etc/carrot/carrot.conf"
+#RAVEND_CONFIGFILE="/etc/raven/raven.conf"
 
 # What directory to write pidfile to?  (created and owned by $RAVEND_USER)
-#RAVEND_PIDDIR="/var/run/carrotd"
+#RAVEND_PIDDIR="/var/run/ravend"
 
 # What filename to give the pidfile
-#RAVEND_PIDFILE="${RAVEND_PIDDIR}/carrotd.pid"
+#RAVEND_PIDFILE="${RAVEND_PIDDIR}/ravend.pid"
 
-# Where to write carrotd data (be mindful that the blockchain is large)
-#RAVEND_DATADIR="/var/lib/carrotd"
+# Where to write ravend data (be mindful that the blockchain is large)
+#RAVEND_DATADIR="/var/lib/ravend"
 
-# User and group to own carrotd process
-#RAVEND_USER="carrot"
-#RAVEND_GROUP="carrot"
+# User and group to own ravend process
+#RAVEND_USER="raven"
+#RAVEND_GROUP="raven"
 
-# Path to carrotd executable
-#RAVEND_BIN="/usr/bin/carrotd"
+# Path to ravend executable
+#RAVEND_BIN="/usr/bin/ravend"
 
-# Nice value to run carrotd under
+# Nice value to run ravend under
 #RAVEND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
 #RAVEND_OPTS=""
 
-# The timeout in seconds OpenRC will wait for carrotd to terminate
+# The timeout in seconds OpenRC will wait for ravend to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule

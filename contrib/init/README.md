@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: carrotd.service
-Upstart: carrotd.conf
-OpenRC:  carrotd.openrc
-         carrotd.openrcconf
-CentOS:  carrotd.init
-OS X:    org.carrot.carrotd.plist
+SystemD: ravend.service
+Upstart: ravend.conf
+OpenRC:  ravend.openrc
+         ravend.openrcconf
+CentOS:  ravend.init
+OS X:    org.raven.ravend.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

@@ -1,15 +1,15 @@
 [Unit]
-Description=Carrot's distributed currency daemon
+Description=Raven's distributed currency daemon
 After=network.target
 
 [Service]
-User=carrot
-Group=carrot
+User=raven
+Group=raven
 
 Type=forking
-PIDFile=/var/lib/carrotd/carrotd.pid
-ExecStart=/usr/bin/carrotd -daemon -pid=/var/lib/carrotd/carrotd.pid \
--conf=/etc/carrot/carrot.conf -datadir=/var/lib/carrotd -disablewallet
+PIDFile=/var/lib/ravend/ravend.pid
+ExecStart=/usr/bin/ravend -daemon -pid=/var/lib/ravend/ravend.pid \
+-conf=/etc/raven/raven.conf -datadir=/var/lib/ravend -disablewallet
 
 Restart=always
 PrivateTmp=true

@@ -1,11 +1,11 @@
 Benchmarking
 ============
 
-Carrot Core has an internal benchmarking framework, with benchmarks
+Raven Core has an internal benchmarking framework, with benchmarks
 for cryptographic algorithms such as SHA1, SHA256, SHA512 and RIPEMD160. As well as the rolling bloom filter.
 
-After compiling carrot-core, the benchmarks can be run with:
-`src/bench/bench_carrot`
+After compiling raven-core, the benchmarks can be run with:
+`src/bench/bench_raven`
 
 The output will look similar to:
 ```

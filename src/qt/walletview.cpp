@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
-#include "carrotgui.h"
+#include "ravengui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -85,7 +85,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setCarrotGUI(CarrotGUI *gui)
+void WalletView::setRavenGUI(RavenGUI *gui)
 {
     if (gui)
     {

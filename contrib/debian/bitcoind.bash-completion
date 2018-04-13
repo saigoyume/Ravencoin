@@ -1,2 +1,2 @@
-contrib/carrotd.bash-completion	carrotd
-contrib/carrot-cli.bash-completion	carrot-cli
+contrib/ravend.bash-completion	ravend
+contrib/raven-cli.bash-completion	raven-cli

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Carrot Core developers
+// Copyright (c) 2017 The Raven Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -30,7 +30,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Carrot Qt UI.
+/** Utility functions used by the Raven Qt UI.
  */
 namespace GUIUtil
 {
@@ -45,10 +45,10 @@ namespace GUIUtil
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "carrot:" URI into recipient object, return true on successful parsing
-    bool parseCarrotURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseCarrotURI(QString uri, SendCoinsRecipient *out);
-    QString formatCarrotURI(const SendCoinsRecipient &info);
+    // Parse "raven:" URI into recipient object, return true on successful parsing
+    bool parseRavenURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseRavenURI(QString uri, SendCoinsRecipient *out);
+    QString formatRavenURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(const QString& address, const CAmount& amount);
@@ -115,7 +115,7 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    bool openCarrotConf();
+    bool openRavenConf();
 
     // Replace invalid default fonts with known good ones
     void SubstituteFonts(const QString& language);
