@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Raven Core developers
+// Copyright (c) 2009-2016 The Carrot Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -168,8 +168,8 @@ public:
         pchMessageStart[3] = 0x4e;
         nDefaultPort = 31680;
         nPruneAfterHeight = 100000;
-        genesis = CreateGenesisBlock(1522446978, 16335503, 0x1e00ffff, 4, 5000 * COIN);
- 
+        genesis = CreateGenesisBlock(1522446978, 16335503, 0x1e00ffff, 4, 5000 * COIN); 
+
 
         // calculate Genesis Block
         // Reset genesis
@@ -208,7 +208,6 @@ public:
             // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
         }
         std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
-	std::cout << "nNonce" << mainnetnonce << "\n";
 */	
         consensus.hashGenesisBlock = genesis.GetHash();        
 
@@ -217,7 +216,9 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x000000e53c2e3a0d008490531ae4c95a3ab30a6aff156043d1722cfbc4eb784b"));
         assert(genesis.hashMerkleRoot == uint256S("0x28ff00a867739a352523808d301f504bc4547699398d70faf2266a8bae5f3516"));
 
+
         vSeeds.emplace_back("cro-seed-01.fatpanda.club", false); 
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);
@@ -241,7 +242,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Raven chain
+            // Update as we know more about the contents of the Carrot chain
             1509572692, // * UNIX timestamp of last known number of transactions
             1,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -303,8 +304,8 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        vSeeds.emplace_back("seed-testnet-raven.ravencoin.org", false); 
-        vSeeds.emplace_back("seed-testnet-raven.bitactivate.com", false); 
+        vSeeds.emplace_back("seed-testnet-carrot.carrot.org", false); 
+        vSeeds.emplace_back("seed-testnet-carrot.bitactivate.com", false); 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -327,7 +328,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Raven chain
+            // Update as we know more about the contents of the Carrot chain
             1513705170, // * UNIX timestamp of last known number of transactions
             1,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
